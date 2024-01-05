@@ -1,16 +1,57 @@
 const fs = require('fs');
-const fs = require('inquirer');
+const inquirer = require('inquirer');
 
 const generateReadMe = ({ Title, Description, installation, usage, contribution, tests, License, Features, Github, Email }) =>
 
-``
+`# ${Title}
+
+## Description\n
+\`\`\`md
+${Description}
+\`\`\`
+
+## Features\n
+\`\`\`md
+* ${Features}
+\`\`\`
+
+## Installation\n
+\`\`\`md
+${installation}
+\`\`\`
+
+## Usage\n
+\`\`\`md
+${usage}
+\`\`\`
+
+## Constribution\n
+\`\`\`md
+${contribution}
+\`\`\`
+
+## Tests\n
+\`\`\`md
+${tests}
+\`\`\`
+
+## License\n
+\`\`\`md
+The license chosen for this project is the ${License} license.
+\`\`\`
+
+## Contact Me\n
+
+Questions, Comments, Concerns? => [Github Profile](https://github.com/${Github}) or ${Email}.
+
+`
 
 inquirer
   .prompt([
     {
       type: 'input',
       name: 'Title',
-      message: 'What is your rpoject called',
+      message: 'What is your project called?',
     },
     {
       type: 'input',
@@ -65,6 +106,6 @@ inquirer
   const ReadmePageContent = generateReadMe(answers);
 
   fs.writeFile('README.md', ReadmePageContent, (err) =>
-    err ? console.log(err) : console.log('Successfully created index.html!')
+    err ? console.log(err) : console.log('Successfully created ReadMe.md!')
   );
 });
