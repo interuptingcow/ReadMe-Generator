@@ -10,6 +10,17 @@ const generateReadMe = ({ Title, Description, installation, usage, contribution,
 ${Description}
 \`\`\`
 
+![License](https://img.shields.io/badge/license-${License}-blue.svg)
+
+## Table of Contents
+* [Features](#features)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contribution](#contribution)
+* [Tests](#tests)
+* [License](#license)
+* [Contact Me](#contact-me)
+
 ## Features\n
 \`\`\`md
 * ${Features}
@@ -36,9 +47,9 @@ ${tests}
 \`\`\`
 
 ## License\n
-\`\`\`md
-The license chosen for this project is the ${License} license.
-\`\`\`
+
+The license chosen for this project is the ${License} license. For more information about the license, visit https://choosealicense.com/licenses/${License.toLowerCase()}
+
 
 ## Contact Me\n
 
@@ -82,7 +93,7 @@ inquirer
       type: 'list',
       name: 'License',
       message: 'What license would you like to use?',
-      choices: ['MIT', 'Apache 2.0', 'GNU Public 3.0', 'Mozilla Public', 'the Unlicense'],
+      choices: ['MIT', 'Apache-2.0', 'GPL-3.0', 'MPL-2.0', 'Unlicense'],
       default: 'MIT'
     },
     {
@@ -104,8 +115,7 @@ inquirer
 ])
 .then((answers) => {
   const ReadmePageContent = generateReadMe(answers);
-
-  fs.writeFile('README.md', ReadmePageContent, (err) =>
+  fs.writeFile('READMEtest.md', ReadmePageContent, (err) =>
     err ? console.log(err) : console.log('Successfully created ReadMe.md!')
   );
 });
